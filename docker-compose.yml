@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:9.0.1
+    container_name: filebeat
+    user: root
+    # ELK 스택과 같은 네트워크에 조인
+    networks:
+      - elk
+    restart: always
+
+    volumes:
+      # Filebeat 설정
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+
+      # 각 서버 로그 디렉터리(WSL2 경로) 마운트
+      - /mnt/d/team5/server1-whisper/logs:/mnt/d/team5/server1-whisper/logs:ro
+      - /mnt/d/team5/server2_rag:/mnt/d/team5/server2_rag:ro
+      - /mnt/d/team5/LLM_Insight_extraction:/mnt/d/team5/LLM_Insight_extraction:ro
+      - /mnt/d/team5/vector_search_server:/mnt/d/team5/vector_search_server:ro
+      - /mnt/d/team5/server2-report-generator:/mnt/d/team5/server2-report-generator:ro
+
+networks:
+  elk:
+    external: true
