@@ -1,0 +1,79 @@
+filebeat.inputs:
+  - type: filestream
+    id: server2_rag_log
+    enabled: true
+    paths:
+      - /Users/s_w/Desktop/log_whisper/Server2-rag/server2_rag.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+    fields:
+      service: server2-rag
+
+  - type: filestream
+    id: llm_insight_log
+    enabled: true
+    paths:
+      - /Users/s_w/Desktop/log_whisper/LLM_Insight_extraction/llm_insight.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+    fields:
+      service: llm_insight
+
+  - type: filestream
+    id: vector_search_log
+    enabled: true
+    paths:
+      - /Users/s_w/Desktop/log_whisper/Server2-vector_search_server/vector_search_server.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+    fields:
+      service: vector_search
+
+  - type: filestream
+    id: report_generator_log
+    enabled: true
+    paths:
+      - /Users/s_w/Desktop/log_whisper/Server2-report-generator/report_generator.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+    fields:
+      service: report_generator
+
+  - type: filestream
+    id: whisper_server_log
+    enabled: true
+    paths:
+      - /Users/s_w/Desktop/log_whisper/server1-whisper/whisper_server.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+    fields:
+      service: whisper
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  indices:
+    - index: "whisper-logs-%{+yyyy.MM.dd}"
+      when.equals:
+        fields.service: "whisper"
+    - index: "server2-rag-logs-%{+yyyy.MM.dd}"
+      when.equals:
+        fields.service: "server2-rag"
+    - index: "llm-insight-logs-%{+yyyy.MM.dd}"
+      when.equals:
+        fields.service: "llm_insight"
+    - index: "vector-search-logs-%{+yyyy.MM.dd}"
+      when.equals:
+        fields.service: "vector_search"
+    - index: "report-generator-logs-%{+yyyy.MM.dd}"
+      when.equals:
+        fields.service: "report_generator"
