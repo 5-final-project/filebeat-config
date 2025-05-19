@@ -3,7 +3,7 @@ filebeat.inputs:
     id: server2_rag_log
     enabled: true
     paths:
-      - /Users/s_w/Desktop/log_whisper/Server2-rag/server2_rag.log
+      - /mnt/d/team5/server2_rag/server2_rag.log
     parsers:
       - ndjson:
           keys_under_root: true
@@ -15,7 +15,7 @@ filebeat.inputs:
     id: llm_insight_log
     enabled: true
     paths:
-      - /Users/s_w/Desktop/log_whisper/LLM_Insight_extraction/llm_insight.log
+      - /mnt/d/team5/LLM_Insight_extraction/llm_insight.log
     parsers:
       - ndjson:
           keys_under_root: true
@@ -27,7 +27,7 @@ filebeat.inputs:
     id: vector_search_log
     enabled: true
     paths:
-      - /Users/s_w/Desktop/log_whisper/Server2-vector_search_server/vector_search_server.log
+      - /mnt/d/team5/vector_search_server/vector_search_server.log
     parsers:
       - ndjson:
           keys_under_root: true
@@ -39,7 +39,7 @@ filebeat.inputs:
     id: report_generator_log
     enabled: true
     paths:
-      - /Users/s_w/Desktop/log_whisper/Server2-report-generator/report_generator.log
+      - /mnt/d/team5/server2-report-generator/report_generator.log
     parsers:
       - ndjson:
           keys_under_root: true
@@ -51,7 +51,7 @@ filebeat.inputs:
     id: whisper_server_log
     enabled: true
     paths:
-      - /Users/s_w/Desktop/log_whisper/server1-whisper/whisper_server.log
+      - /mnt/d/team5/server1-whisper/logs/whisper_server.log
     parsers:
       - ndjson:
           keys_under_root: true
