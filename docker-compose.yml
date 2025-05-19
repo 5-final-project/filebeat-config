@@ -12,7 +12,7 @@ services:
 
     volumes:
       # Filebeat 설정
-      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /home/ubuntu/filebeat-config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
 
       # 각 서버 로그 디렉터리(WSL2 경로) 마운트
       - /mnt/d/team5/server1-whisper/logs:/var/logs/whisper:ro
