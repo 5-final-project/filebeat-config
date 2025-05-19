@@ -60,7 +60,7 @@ filebeat.inputs:
       service: whisper
 
 output.elasticsearch:
-  hosts: ["localhost:9200"]
+  hosts: ["http://elasticsearch:9200"]
   indices:
     - index: "whisper-logs-%{+yyyy.MM.dd}"
       when.equals:
