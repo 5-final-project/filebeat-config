@@ -15,11 +15,11 @@ services:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
 
       # 각 서버 로그 디렉터리(WSL2 경로) 마운트
-      - /mnt/d/team5/server1-whisper/logs:/mnt/d/team5/server1-whisper/logs:ro
-      - /mnt/d/team5/server2_rag:/mnt/d/team5/server2_rag:ro
-      - /mnt/d/team5/LLM_Insight_extraction:/mnt/d/team5/LLM_Insight_extraction:ro
-      - /mnt/d/team5/vector_search_server:/mnt/d/team5/vector_search_server:ro
-      - /mnt/d/team5/server2-report-generator:/mnt/d/team5/server2-report-generator:ro
+      - /mnt/d/team5/server1-whisper/logs:/var/logs/whisper:ro
+      - /mnt/d/team5/server2_rag/logs:/var/logs/server2_rag:ro
+      - /mnt/d/team5/LLM_Insight_extraction/logs:/var/logs/llm_insight:ro
+      - /mnt/d/team5/vector_search_server/logs:/var/logs/vector_search:ro
+      - /mnt/d/team5/server2-report-generator/logs:/var/logs/report_generator:ro
 
 networks:
   elk:
