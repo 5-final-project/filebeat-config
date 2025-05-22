@@ -15,11 +15,11 @@ services:
       - /home/ubuntu/filebeat-config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
 
       # 각 서버 로그 디렉터리(WSL2 경로) 마운트
-      - /mnt/d/team5/server1-whisper/logs:/var/logs/whisper:ro
-      - /mnt/d/team5/server2_rag/logs:/var/logs/server2_rag:ro
-      - /mnt/d/team5/LLM_Insight_extraction/logs:/var/logs/llm_insight:ro
-      - /mnt/d/team5/vector_search_server/logs:/var/logs/vector_search:ro
-      - /mnt/d/team5/server2-report-generator/logs:/var/logs/report_generator:ro
+      - /var/logs/whisper:/var/logs/whisper:ro
+      - /var/logs/server2_rag:/var/logs/server2_rag:ro
+      - /var/logs/llm_insight:/var/logs/llm_insight:ro
+      - /var/logs/vector_search:/var/logs/vector_search:ro
+      - /var/logs/report_generator:/var/logs/report_generator:ro
 
 networks:
   elk:
